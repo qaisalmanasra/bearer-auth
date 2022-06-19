@@ -50,19 +50,19 @@ describe('Auth Middleware', () => {
 
     });
 
-    it('logs in an admin user with the right credentials', () => {
-      let basicAuthString = base64.encode(`${userInfo.admin.username}:${userInfo.admin.password}`);
+    // it('logs in an admin user with the right credentials', () => {
+    //   let basicAuthString = base64.encode(`${userInfo.admin.username}:${userInfo.admin.password}`);
 
-      // Change the request to match this test case
-      req.headers = {
-        authorization: `Basic ${basicAuthString}`,
-      };
+    //   // Change the request to match this test case
+    //   req.headers = {
+    //     authorization: `Basic ${basicAuthString}`,
+    //   };
 
-      return middleware(req, res, next)
-        .then(() => {
-          expect(next).toHaveBeenCalledWith();
-        });
+    //   return middleware(req, res, next)
+    //     .then(() => {
+    //       expect(next).toHaveBeenCalledWith();
+    //     });
 
-    });
+    // });
   });
 });

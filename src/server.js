@@ -11,13 +11,16 @@ const morgan = require('morgan');
 const errorHandler = require('./error-handlers/500.js');
 const notFound = require('./error-handlers/404.js');
 const authRoutes = require('./auth/router/index.js');
-const signinRouter=require("./auth/router/index");
-const signupRouter=require("./auth/router/index");
-const secretStuffRouters=require("./auth/router/index");
-const getUsersRouter=require("./auth/router/index");
+// const signinRouter=require("./auth/router/index");
+// const signupRouter=require("./auth/router/index");
+// const secretStuffRouters=require("./auth/router/index");
+// const getUsersRouter=require("./auth/router/index");
 
 // Prepare the express app
 const app = express();
+app.get("/",(req,res)=>{
+  res.send("Home Page")
+})
 
 // App Level MW
 app.use(cors());
@@ -28,14 +31,14 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use(authRoutes);
-app.use(signinRouter);
-app.use(signupRouter);
-app.use(secretStuffRouters);
-app.use(getUsersRouter);
+// app.use(signinRouter);
+// app.use(signupRouter);
+// app.use(secretStuffRouters);
+// app.use(getUsersRouter);
 
 // Catchalls
 app.use(notFound);
-
+app.use(errorHandler);
 
 module.exports = {
   server: app,
